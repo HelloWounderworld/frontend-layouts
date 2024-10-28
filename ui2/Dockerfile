@@ -44,13 +44,14 @@ RUN node --version && npm --version
 RUN npm install -g @vue/cli
 
 # Define o diretorio de trabalho para frontend
-WORKDIR /ui2
+WORKDIR /ui1
 
 # Copie todos os arquivos do projeto backend
-COPY . /ui2/
+COPY . /ui1/
 
 # Tentando instalar as dependencias do package.json
 RUN npm install \
-    && npm build
+    && npm build \
+    && npm install -D sass sass-loader
 
 CMD ["npm", "run", "serve"]

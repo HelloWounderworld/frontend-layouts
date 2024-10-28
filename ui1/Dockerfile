@@ -51,6 +51,7 @@ COPY . /ui1/
 
 # Tentando instalar as dependencias do package.json
 RUN npm install \
-    && npm build
+    && npm build \
+    && npm install -D sass sass-loader
 
 CMD ["npm", "run", "serve"]
