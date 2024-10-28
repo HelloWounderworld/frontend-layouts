@@ -1,0 +1,19 @@
+version: '3.9'
+
+services:
+  ui1:
+    image: nginx
+    volumes: ./ui1:/teramatsu/ui1
+    build:
+      context: ./ui1
+    ports:
+      - $UI_PORT1_DEV:8080
+      - $UI_PORT1_PROD:8081
+  ui2:
+    image: nginx
+    volumes: ./ui2:/teramatsu/ui2
+    build:
+      context: ./ui2
+    ports:
+      - $UI_PORT2_DEV:8080
+      - $UI_PORT2_PROD:8081
