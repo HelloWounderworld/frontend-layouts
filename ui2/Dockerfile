@@ -16,6 +16,8 @@ RUN apt-get update\
     npm \
     ca-certificates \
     lsb-release \
+    gnupg2 \
+    ubuntu-keyring \
     && curl https://nginx.org/keys/nginx_signing.key | gpg --dearmor \
     | tee /usr/share/keyrings/nginx-archive-keyring.gpg >/dev/null \
     && echo "deb [signed-by=/usr/share/keyrings/nginx-archive-keyring.gpg] http://nginx.org/packages/ubuntu `lsb_release -cs` nginx" \
@@ -42,10 +44,10 @@ RUN node --version && npm --version
 RUN npm install -g @vue/cli
 
 # Define o diretorio de trabalho para frontend
-WORKDIR /ui
+WORKDIR /ui2
 
 # Copie todos os arquivos do projeto backend
-COPY . /ui/
+COPY . /ui2/
 
 # Tentando instalar as dependencias do package.json
 RUN npm install \
